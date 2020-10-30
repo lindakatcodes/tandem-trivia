@@ -1,37 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Landing from './components/Landing';
+import Question from './components/Question';
 
 function App() {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
+
+  const [bgColor, setBgColor] = useState('');
+  const [pageType, setPageType] = useState('landing');
+  const [score, setScore] = useState(0);
+  const [qsLeft, setQsLeft] = useState(10);
+
   useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
+    randomColors();
+  })
+
+  const backgrounds = ['#D6EBD6', '#EDAD9E', '#D6E7FF'];
+
+  function randomColors() {
+    let newBgIndex = Math.floor(Math.random() * backgrounds.length);
+    let newBgColor = backgrounds[newBgIndex];
+    setBgColor(newBgColor);
+  };
+
+  const rootStyles = {
+    background: bgColor
+  }
+
+  function checkPageType() {
+    if (pageType === 'landing') {
+      return <Landing setPageType={setPageType} score={score} setScore={setScore} qsLeft={qsLeft} />
+    } else {
+      return <Question setPageType={setPageType} setScore={setScore} />
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="react-root" style={rootStyles}>
+      {checkPageType()}
     </div>
   );
 }
