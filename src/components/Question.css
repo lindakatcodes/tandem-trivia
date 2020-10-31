@@ -1,0 +1,80 @@
+.question-wrapper {
+  padding: 5%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.q-text {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 15%;
+}
+
+.q-options {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-gap: 0.5em;
+  margin-bottom: 15%;
+}
+
+.radio {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: 0.5em;
+  font-size: 1.1rem;
+  padding: 1%;
+}
+
+.radio-input {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input:focus + .radio-control {
+  box-shadow: 0 0 0.25em 0.035em var(--gray);
+}
+
+input:checked + .radio-control {
+  background-image: linear-gradient(0deg, transparent 10%, var(--gray) 15%, var(--gray) 85%, transparent 90%);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.radio-control {
+  display: block;
+  width: 0.75em;
+  height: 0.8em;
+  border-radius: 10%;
+  border: 0.1em solid var(--gray);
+}
+
+.radio-label {
+  line-height: 1;
+  transition: 180ms all ease-in-out;
+  opacity: 0.75;
+  text-decoration: none;
+  font-family: var(--mono);
+}
+
+.radio-label:hover {
+  opacity: 1;
+  text-decoration: underline var(--gray);
+}
+
+.send-answer {
+  background: var(--gray);
+  color: var(--offwhite);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 4% 2%;
+  border-radius: 5px;
+  width: 60%;
+}
