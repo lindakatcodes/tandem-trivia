@@ -5,8 +5,6 @@
   --sans: 'Fira Sans', sans-serif;
   --darkGreen: #2C4023;
   --darkPurple: #7C1352;
-  --darkBlue: #001229;
-  --peach: #F36E5A;
   --offwhite: #FFF4E6;
   --gray: #292929;
   --lightGreen: #D6EBD6;
@@ -14,7 +12,7 @@
   --lightBlue: #D6E7FF;
 }
 
-body {
+html, body {
   padding: 0;
   margin: 0;
   font-family: var(--sans);

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Landing.css';
 
 function Landing(props) {
 
   const start = {
     title: 'Tandem for 400!',
-    subtitle: 'A Trivia app created with ♥ for the Apprentice Software Engineer program.',
-    text: "Are you ready to test your wits? I've got 10 questions for you - get as many correct as you can to win big!",
+    subtitle: <p>A Trivia app created with ♥ for the Apprentice Software Engineer program.</p>,
+    text: <p>Are you ready to test your wits? <br></br>I've got 10 questions for you - try to get as many correct as you can!</p>,
     buttonText: 'Ready to Start?',
   };
 
   const middle = {
     title: 'Halfway there!',
-    subtitle: <p>You're halfway through the questions!</p>,
+    subtitle: <p>5 questions down,<br></br> 5 to go!</p>,
     text: <p>So far, your score is <span className="score">{props.score} / 10.</span> <br></br> Keep going!</p>,
     buttonText: 'Next Question',
   };
@@ -20,7 +20,7 @@ function Landing(props) {
   const end = {
     title: 'You made it!',
     subtitle: <p>Congrats on completing the round! <br></br>Final score: <span className="score">{props.score} / 10</span></p>,
-    text: <p>View the correct answers below. <br></br>Click the button for fresh questions. <br></br>  Thanks for playing!</p>,
+    text: <p>Click the button at the bottom to play a new round. <br></br>  Thanks for playing!</p>,
     buttonText: 'Try again?',
   };
 
@@ -36,6 +36,42 @@ function Landing(props) {
 
   const textData = toGo(props.qsAnswered);
 
+  const commentList = (score) => {
+    let commentText = '';
+    let range = '';
+    if (score < 3) {
+      range = 'low'
+    } else if (score < 5) {
+      range = 'mid-low'
+    } else if (score < 7) {
+      range = 'mid-high'
+    } else if (score <= 9) {
+      range = 'high'
+    } else if (score === 10) {
+      range = 'best'
+    }
+    switch (range) {
+      case ('low'):
+        commentText = `Ohhh, that was a rough round! Study up and try again - you learn something new each time!`;
+        break;
+      case ('mid-low'):
+        commentText = `There's some tough questions in there, huh? Check out your answers and try again - I bet you can do better next time!`;
+        break;
+      case ('mid-high'):
+        commentText = `Hey, not bad! A majority right is a reason to celebrate! See what you missed below and try again!`;
+        break;
+      case ('high'):
+        commentText = `Nice work! You've played this before, haven't you? Keep trying for that perfect score!`;
+        break;
+      case ('best'):
+        commentText = `Perfection - great job!! You are the trivia master!`;
+        break;
+    }
+    return commentText;
+  }
+
+  const comments = commentList(props.score);
+
   function results() {
     // display question, guessed answer, and correct answer
     let finalInfo = [];
@@ -47,7 +83,7 @@ function Landing(props) {
       const match = qGuess === qCorrect;
 
       const assembled =
-        <div className="answer">
+        <div className="answer" key={i}>
           <p className="question">#{i}: {qText}</p>
           <p className={`guess ${match ? 'correct-match' : 'wrong-match'}`}>You answered: {qGuess}</p>
           <p className="correct">The right answer is : {qCorrect}</p>
@@ -55,7 +91,6 @@ function Landing(props) {
 
       finalInfo.push(assembled);
     }
-    console.log(finalInfo);
     return finalInfo;
   }
 
@@ -72,8 +107,13 @@ function Landing(props) {
     <div className="page-root">
       <h1 className="title">{textData.title}</h1>
       <div className="subtitle">{textData.subtitle}</div>
+      <div className={`comments ${props.qsAnswered !== 10 ? 'comments-hidden' : ''}`}>
+        <hr></hr>
+        {comments}
+        <hr></hr>
+      </div>
       <div className="text">{textData.text}</div>
-      <div className={`answers`}>
+      <div className={`answers ${props.qsAnswered !== 10 ? 'answers-hidden' : ''}`}>
         {props.qsAnswered === 10 ? results() : null}
       </div>
       <button className="start-button"

@@ -16,8 +16,11 @@ function App() {
   const [reset, setReset] = useState(true);
 
   const backgrounds = ['#D6EBD6', '#EDAD9E', '#D6E7FF'];
+
   const rootStyles = {
-    background: bgColor
+    'background': bgColor,
+    'background-attachment': 'fixed',
+    'background-repeat': 'no-repeat',
   }
 
   function rotateColors() {

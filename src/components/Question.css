@@ -3,6 +3,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  max-width: 720px;
 }
 
 .q-text {
@@ -15,7 +16,8 @@
   display: grid;
   grid-template-columns: 1fr; 
   grid-gap: 0.5em;
-  width: 75%;
+  width: max-content;
+  white-space: nowrap;
   margin-bottom: 7%;
 }
 
@@ -73,7 +75,7 @@ input:checked {
   font-size: 0.8rem;
   padding: 4% 2%;
   border-radius: 5px;
-  width: 60%;
+  width: clamp(40%, 50%, 60%);
 }
 
 .error {
@@ -92,4 +94,24 @@ input:checked {
 .error-visible {
   opacity: 1;
   border: 2px solid var(--darkPurple);
+}
+
+@media screen and (min-width: 1000px) {
+  .q-text {
+    margin-bottom: 3%;
+  }
+
+  .q-options {
+    margin-bottom: 3%;
+  }
+
+  .send-answer {
+    padding: 3% 1%;
+  }
+
+  .error {
+    margin-top: 3%;
+    height: auto;
+    padding: 1%;
+  }
 }
