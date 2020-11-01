@@ -1,5 +1,5 @@
+// Data pulling function - reads in the json file, then picks a random number and saves that question. Checks to make sure we don't grab a number more than once, so no repeat questions.
 function getData() {
-  
   let fullData = fetch('Apprentice_TandemFor400_Data.json')
   .then(res => res.json())
   .then(data => {

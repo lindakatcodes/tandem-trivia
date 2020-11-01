@@ -3,6 +3,7 @@ import './App.css';
 import Landing from './components/Landing';
 import Question from './components/Question';
 import GetData from './data/dataUtil';
+import GetQuestion from './data/questionUtil';
 
 function App() {
 
@@ -15,14 +16,14 @@ function App() {
   const [responses, setResponses] = useState([]);
   const [reset, setReset] = useState(true);
 
+  // wanted background color to change per page, so set a few options
   const backgrounds = ['#D6EBD6', '#EDAD9E', '#D6E7FF'];
 
   const rootStyles = {
-    'background': bgColor,
-    'background-attachment': 'fixed',
-    'background-repeat': 'no-repeat',
+    'backgroundColor': bgColor
   }
 
+  // determines what color to use - logic makes sure the color changes between first load and first question, and makes sure we don't ever go longer than the color array length
   function rotateColors() {
     let currentColor = bgColor;
     if (currentColor !== '' && qsAnswered > 0) {
@@ -42,10 +43,11 @@ function App() {
     rotateColors();
   }, [qsAnswered, pageType])
 
+  // this gets the 10 questions for the round and loads up the first question - only ever called when we're just starting a round.
   async function loadQuestions() {
     let result = await GetData();
     setQuestions(result);
-    let single = getQuestion(result);
+    let single = GetQuestion(result, 0);
     setQuestion(single);
     setReset(false);
   }
@@ -54,33 +56,7 @@ function App() {
     loadQuestions();
   }, [reset]);
 
-  function randomizeChoices(arr) {
-    let used = [];
-    let order = [];
-    for (let i = 0; i < arr.length; i++) {
-      let nextNum = Math.floor(Math.random() * arr.length);
-      if (!used.includes(nextNum)) {
-        order.push(nextNum);
-        used.push(nextNum);
-      } else {
-        i -= 1;
-      }
-    }
-
-    let results = order.map(num => arr[num]);
-    return results;
-  }
-
-  function getQuestion(resultArr) {
-    const data = resultArr[qsAnswered];
-    const fullChoices = randomizeChoices([...data.incorrect, data.correct]);
-    return {
-      question: data.question,
-      choices: fullChoices,
-      correct: data.correct,
-    }
-  }
-
+  // Determines if we need to load a landing page or question page
   function checkPageType() {
     if (pageType === 'landing') {
       return <Landing setPageType={setPageType} score={score} setScore={setScore} qsAnswered={qsAnswered} setQsAnswered={setQsAnswered} questions={questions} responses={responses} setResponses={setResponses} setReset={setReset} />
@@ -89,6 +65,7 @@ function App() {
     }
   };
 
+  // Render return
   return (
     <div className="react-root" style={rootStyles}>
       {checkPageType()}

@@ -2,7 +2,7 @@ import React from 'react';
 import './Landing.css';
 
 function Landing(props) {
-
+  // Determines what text to display, based on where we are - start of game, middle of round, end of round 
   const start = {
     title: 'Tandem for 400!',
     subtitle: <p>A Trivia app created with ♥ for the Apprentice Software Engineer program.</p>,
@@ -24,6 +24,7 @@ function Landing(props) {
     buttonText: 'Try again?',
   };
 
+  // Logic to determine which text to render
   const toGo = (numDone) => {
     if (numDone === 0) {
       return start;
@@ -36,6 +37,7 @@ function Landing(props) {
 
   const textData = toGo(props.qsAnswered);
 
+  // When round is over, display some text based on the user's score
   const commentList = (score) => {
     let commentText = '';
     let range = '';
@@ -72,8 +74,8 @@ function Landing(props) {
 
   const comments = commentList(props.score);
 
+  // Show the final results of the round - the questions asked, the user's answer, and the correct answer
   function results() {
-    // display question, guessed answer, and correct answer
     let finalInfo = [];
 
     for (let i = 0; i < props.questions.length; i++) {
@@ -94,8 +96,8 @@ function Landing(props) {
     return finalInfo;
   }
 
+  // Reset all the tracking values so we can start over
   function reset() {
-    // reset all the values so we can start over
     props.setReset(true);
     props.setScore(0);
     props.setQsAnswered(0);
@@ -103,6 +105,7 @@ function Landing(props) {
     props.setPageType('question');
   }
 
+  // Render return
   return (
     <div className="page-root">
       <h1 className="title">{textData.title}</h1>

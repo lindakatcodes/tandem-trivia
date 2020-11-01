@@ -11,11 +11,3 @@
   --lightPink: #EDAD9E;
   --lightBlue: #D6E7FF;
 }
-
-html, body {
-  padding: 0;
-  margin: 0;
-  font-family: var(--sans);
-  color: var(--gray);
-  box-sizing: border-box;
-}

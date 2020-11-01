@@ -101,15 +101,15 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .start-button {
-    padding: 3% 1%;
-  }
-
   .subtitle {
     margin-bottom: 3%;
   }
 
   .text {
     margin-bottom: 3%;
+  }
+
+  .start-button {
+    padding: 3% 1%;
   }
 }
