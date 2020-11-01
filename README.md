@@ -1,5 +1,7 @@
 # Trivia!
 
+You can view this project online here: <https://tandem-trivia-400.netlify.app>
+
 ## Guidelines & Requirements
 
 Created for the Tandem Apprenticeship Program! The basic goal for this project is to create a trivia app from the provided questions. A player can view the questions and multiple choice answer options, the correct answer on submission, and their score.
@@ -27,6 +29,8 @@ I'd love to go through and add some tests to this. I think testing is really imp
 ## Build Scripts
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
+
+This project uses Snowpack and React. To run it locally, you'll want to run `npm install` first, then the `npm start` script will set up your dev server and let you see the project locally. This will run Snowpack with [this React template](https://github.com/snowpackjs/snowpack/tree/master/create-snowpack-app/app-template-react), which will add React, Snowpack, and some basic testing packages to your project. Then you should be good to go!
 
 ### npm start
 
