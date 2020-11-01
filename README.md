@@ -18,6 +18,8 @@ A user can view questions one at a time, all multiple choice. Questions should n
 
 This was my first React project! I'd been learning it recently, and this sounded like a perfect opportunity to build something with it. As such, I'm certain there are better ways to write functionality and/or organize my code. As I learn more, it would be nice to go back through and refactor or reorganize. Everything seems to work decently right now, but I would not be surprised to learn there might be better ways to do things. It was a great learning experience though, and I'm actually really proud of it right now!
 
+There's a small page glitch when you click the button on the final page to start a new round of questions. It briefly shows the final question from the last round before it shows the new one. I'm assuming this is because of extracting the `getQuestion` function out into it's own file and importing it in, and I probably need to await the response before I load the page. Just ran out of time to fix this. Will probably be one of the first things I go back and fix.
+
 I styled this off of [Typeform's form styles](https://www.typeform.com/templates/t/trivia/), because I love the way they look and act. However, I didn't have time to implement all the nice keyboard interactions for selecting items and progressing. So I would love to go back and add those things in.
 
 I'd also like to show the question number on each page, so user's always know what number they're on and how far they have to go. Either the actual number or a progress bar would be really nice for this. It would be nice to have some form of navigation, too - maybe even a way for user's to save their scores and compare results with others.
