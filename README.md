@@ -20,7 +20,7 @@ This was my first React project! I'd been learning it recently, and this sounded
 
 I styled this off of [Typeform's form styles](https://www.typeform.com/templates/t/trivia/), because I love the way they look and act. However, I didn't have time to implement all the nice keyboard interactions for selecting items and progressing. So I would love to go back and add those things in.
 
-I'd also like to show the question number on each page, so user's always know what number they're on and how far they have to go. Either the actual number or a progress bar would be really nice for this.
+I'd also like to show the question number on each page, so user's always know what number they're on and how far they have to go. Either the actual number or a progress bar would be really nice for this. It would be nice to have some form of navigation, too - maybe even a way for user's to save their scores and compare results with others.
 
 I'm also not sure why my landing pages are adding in a vertical scroll - all my debugging has turned up nothing. For now it's just a minor annoyance, but I'd really like to track that down and get rid of that, as it's not necessary.
 
