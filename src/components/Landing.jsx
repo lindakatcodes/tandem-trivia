@@ -4,9 +4,9 @@ import './Landing.css';
 function Landing(props) {
   // Determines what text to display, based on where we are - start of game, middle of round, end of round 
   const start = {
-    title: 'Tandem for 400!',
-    subtitle: <p>A Trivia app created with ♥ for the Apprentice Software Engineer program.</p>,
-    text: <p>Are you ready to test your wits? <br></br>I've got 10 questions for you - try to get as many correct as you can!</p>,
+    title: 'Trivia Time!',
+    subtitle: <p>Are you ready to test your wits?</p>,
+    text: <p>I've got 10 questions for you - try to get as many correct as you can!</p>,
     buttonText: 'Ready to Start?',
   };
 
